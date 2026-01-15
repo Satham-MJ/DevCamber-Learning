@@ -1,0 +1,27 @@
+{
+  "name": "dev_camper_api",
+  "version": "1.0.0",
+  "description": "Backend API for dev_camper_project",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Satham-MJ/DevCamber-Learning.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Satham-MJ/DevCamber-Learning/issues"
+  },
+  "homepage": "https://github.com/Satham-MJ/DevCamber-Learning#readme",
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.11"
+  }
+}
