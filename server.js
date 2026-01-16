@@ -1,10 +1,29 @@
 const express = require("express");
 const dotenv = require("dotenv");
+const morgan = require("morgan");
+const colors = require("colors");
+const connectDB = require("./config/db");
 dotenv.config({ path: "./config/config.env", override: true });
-const app = express();
 
+// Connect to database
+connectDB();
+
+// Route files
+const bootcamps = require("./routes/bootcamps");
+const app = express();
+app.use(morgan("dev"));
+app.use("/api/v1/bootcamps", bootcamps);
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, () => {
-  console.log(`Server running in ${process.env.NODE_ENV} mode on PORT ${PORT}`);
+const server = app.listen(PORT, () => {
+  console.log(
+    `Server running in ${process.env.NODE_ENV} mode on PORT ${PORT}`.yellow.bold
+  );
+});
+
+// Handle unhandles promise rejections
+process.on("unhandledRejection", (err, promise) => {
+  console.log(`Error ${err.messgae}`);
+  // Close server & exit process
+  server.close(() => process.exit(1));
 });
