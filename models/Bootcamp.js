@@ -88,5 +88,9 @@ const BootcampSchema = new mongoose.Schema({
     default: Date.now,
   },
 });
-
+BootcampSchema.pre("save", function () {
+  console.log(this.name);
+  this.name = this.name.toUpperCase();
+  console.log(this.name);
+});
 module.exports = mongoose.model("Bootcamp", BootcampSchema);
